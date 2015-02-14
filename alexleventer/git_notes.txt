@@ -1,0 +1,3 @@
+git branch <branchname> creates a new branch
+git commit -m "comment" creates a commit
+git push pushes those commits to the repo
