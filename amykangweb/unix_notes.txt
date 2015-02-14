@@ -1,0 +1,34 @@
+ls - List all documents in current folder
+pwd - print working directory
+cd - change directory
+less - program for reading files
+cat - prints contents of one or more files to the console
+nano - a simple text editor
+mv - moves, or renames, a file or directory
+cp - copies file or directory
+rm - removes file or directory
+mkdir - make directory
+whoami - which user you are signed in as
+su - switch user
+chmod - changes permissions mode of file or directory
+chown - changes the owner of a file or directory
+sudo - run a command as a super user
+top - a task manager that lets you view processes
+ps - shows processes
+ps aux - View a full list of all processes
+ctrl-z - stop or pause the current process
+fg - bring the most recently stopped program to the foreground
+jobs - prints the list of jobs in this session
+signal - a message sent to a process by the operating system
+ctrl-c - send the TERM signal to the current process
+kill -9 #### - means to stop process immediately, do not cleanup
+echo - prints the arguments to the screen
+bash - starts new instance
+which - print the location of a program
+find - locate a file by name
+grep - search inside a file for a pattern
+< FILE - Use FILE as the standard input
+> FILE - Redirect standard output to FILE
+>> FILE - Redirect the output to append stream to FILE
+2 > FILE - Redirect the standard error stream to FILE
+/dev/null - A special file that will delete anything written into it

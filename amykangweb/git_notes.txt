@@ -1,0 +1,22 @@
+git init - creates repository
+git add - Adds file to staging area
+git commit - commits changes
+git status - shows current version control of our project
+git log - Shows a log of all commits
+git checkout COMMIT#- check state of repository and files in this commit
+git diff ### ### - will return difference between commits
+HEAD~1 - stands for previous commit
+HEAD - latest commit
+git branch - show listing of all branches
+git branch BRANCH- create new branch
+git checkout BRANCH - switch to branch
+git checkout master - Switch to current version
+git checkout -b BRANCH - creates and switches to branch
+git branch -D BRANCH - deletes branch
+git merge BRANCH - merges branch to master
+git clone ORIGIN NAME - clone ORIGIN to our directory as NAME
+git remote - to check all repositories
+git remote add CLONE DIRECTORY - add cloned repository to origin
+git push ORIGIN BRANCH - pushes changes to remote repository and adds new branch
+git pull ORIGIN BRANCH - pulls repo from origin BRANCH
+Fork - will create clone of project in your own GitHub account
