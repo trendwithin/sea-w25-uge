@@ -15,6 +15,4 @@ git clone <fromRepository> <toRepository> = clone fromRepository and name it toR
 git remote = show remote repositories
 git remote add <remoteRepositoryName> <locationOfRemoteRepository> = add a remote repository to the current repository
 git push = pushes changes from your repository to a remote repository; origin is default remote
-git push <remoteRepositoryName> <branchName> = pushes to the remote repository; branchName is only required if the branch does not exist on the remote repositor
-y
-
+git push <remoteRepositoryName> <branchName> = pushes to the remote repository; branchName is only required if the branch does not exist on the remote repository
