@@ -163,6 +163,52 @@ need to specify the origin
 
 github
 
+pull requests - enhanced branches. working in isolation, discuss proposed changes, etc.
+
+Watch…github will notify us if anything notable happens
+Star…adds to favorites, easier to find later
+Fork…creates a clone in our own account
+
+create a NEW repo via GitHub
+touch README.md
+git init
+git add README.md
+git commit -m “first commit”
+git remote add origin https://github.com/jennerad/newreponame
+git push -u origin master
+
+or push an existing one
+git remote add origin https://github.com/jennerad/newreponame
+git push -u origin master
+
+git workflow
+
+master branch = canonical
+
+feature branches are great for when you want to add a new feature, do a big refactor/redesign, or a substantial change.
+
+GitFlow
+feature branch philosophy for features, release, hot fixes
+
+needs to be installed
+
+git flow init //initialize your current repo
+asks about which branch to use for production (master is the live version)
+asks about which branch to put next release
+branch prefixes: accept defaults
+version tag prefixes: tagging are special names for certain commits
+
+git flow feature start feature_name
+	creates a new branch feature/feature_name, based on whatever branch you were in. and checks out that branch. 
+
+when done
+git flow features finish feature_name
+	merges feature_name into the next release branch, removes feature_name and checks out the next release branch.
+
+hotfix branches
+git flow hotfix start oh_no_a_bug
+make changes
+git flow hotfix finish oh_no_a_bug
 
 
 
