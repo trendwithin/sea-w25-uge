@@ -4,6 +4,8 @@ touch file1 //touch creates files
 
 to read a file
 
+cat file1 //cat is a short way to read a file
+
 less hello.txt
   arrow keys = scroll
   space bar = page down

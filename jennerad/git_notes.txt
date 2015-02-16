@@ -16,6 +16,158 @@ git commit -m “”  #commit changes
 git status   #what’s up git?
 ********
 
+Notes | Git on Treehouse:
+
+Treehouse/Git Basics
+
+git —version
+git config —global user.name “xyz”
+git config —global user.email “jkdlfjdfj@xyz"
+
+create a repo:
+option 1:
+	git init my_first_repo
+
+option2:
+go into the folder
+git init (assumes THIS folder)
+
+ls -a shows an invisible .git file. Delete that and git stops tracking (rm -r my_even_cooler_project/.git
+
+create a file:
+nano README
+
+track the file:
+git add README //adds to staging area
+
+commit changes:
+git commit  
+git commit -m “comments here"
+git commit -a //commits everything that has changed (no need to list individual files)
+	a=all
+	m=message
+git commit -a -m //both!
+
+
+
+staging a file:
+from inside the project folder
+git status //shows if a file has been changed, what’s on the stage
+git add file1
+git commit -m “changed file1”
+
+
+touch file1
+touch file2 //this creates files
+
+history, review commits
+git log //shows commit identifier, author, date & time, commit message
+
+check out a version, using the identifier
+git checkout <commit id>
+(error message about detached HEAD - telling you you’ve checked out an older version and you might get weird results if you make changes)
+
+(cat file1) to read it
+
+git checkout master //goes back to the master
+git checkout HEAD //most recent commit
+git checkout HEAD~1 //shows you the previous commit
+
+diff can show what’s changed between 2 files.
+git diff <commit id 1><commit id 2>
+
+branching
+git status will tell you which branch you are on.
+
+git branch <branchname>
+git checkout <branchname>
+git checkout -b <branchname> //create and checkout
+git status will tell you which branch you are on
+
+*when you create a new branch it starts as a copy of whatever commit you are currently on.
+
+what branches exist?
+git branch
+delete a branch?
+git branch -d <branchname>
+git branch -D <branchname> //deletes no matter the merge status
+rename a branch?
+git branch -m <oldname> <newname>
+git branch -M <oldname> <newname> //if there is already one named <newname> it forces it
+
+
+merging
+git checkout master //first, go to the master branch
+git merge <branchname> //merges branchname history into current branch
+
+fast-forward in header means
+
+merge conflicts
+edit the file in nano…
+
+<<<<<<<HEAD (latest commit in current branch)
+jdlfdafd;l
+=======
+kfljdljafldajf;
+>>>>>>branch name
+
+after conflict is changed
+git add <filename>
+git commit 
+//git knows we are resolving a conflict
+
+one option instead of merge commits is rebasing
+(take all changes from one branch and replay them on another)
+
+
+git merge and make sure that YOUR version wins
+
+git mergetool
+
+remote repos
+
+2 options
+push changes to remote repo
+pull changes from remote to local
+
+clone/cloning
+
+git clone <address>
+
+git clone <originalreponame> <localreponame>
+
+example: git clone our_clone_project ~/my_cool_project
+//automatically makes the original repo into a remote
+
+git remote //shows remotes associated with current repo
+example: originalreponame would show up
+
+git remote add <reponame> <path to directory name>
+example: git remote add our_clone ~/our_clone_project
+//add a new remote repo to the current
+
+push/pull
+git push - push your latest changes to a remote repository.
+git pull - pull the latest changes from a remote repository to your repository.
+git push remote-name new-branch-name
+
+example: git push origin new_feature
+
+if you get a fast-forward error:
+
+git pull remote branch
+
+
+error, no configured push destination
+need to specify the origin
+
+github
+
+
+
+
+**********
+
 Notes from Git on CodeSchool
 
 Git on CodeSchool
@@ -469,7 +621,7 @@ git config —global alias.ci commit
 
 
 
-Notes from Git on Treehouse:
+
 
 
 
