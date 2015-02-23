@@ -1,0 +1,5 @@
+cp source location - makes a copy of a file/directory from the source to the location of choice.
+
+mkdir dirname - makes a new directory with the specified name.
+
+rm options filename - deletes the file(s)/folder(s) specified.

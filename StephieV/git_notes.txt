@@ -1,0 +1,41 @@
+git init [project_name] - initializes a new repository. Ifproject_name is provided, it creates a new project directory with that name. If not, it initializes a repository in the current directory.
+
+git add - adds files to the repository so that Git knows to track their changes. It puts the added file into the staging area. You’re adding all the files you want to commit to one place so it’s ready to go when you run the git commit command.
+
+git commit - commits all added files to the repository as a change. With the -a flag, commits all changes to all tracked files. With the -m flag, allows you to specify a commit message directly on the command line instead of in your default editor.
+
+git config - allows you to make configuration changes to Git. With the --global flag, makes these changes available across your entire system.
+
+git status - show the current status of the git repository, including if there are any uncommitted changes and whether or not any of our changes have been put in the staging area. What branch we’re on
+
+git add - not a new command for this video, but we learned that it does something more than just add files to be tracked - it also adds changes to the staging area.
+
+git commit - not a new command for this video, but we learned that without any arguments (or the -a flag) it will default to committing everything that's currently in the staging area.
+
+git log - Show us a chronological log of all of our commits to the current repository.
+
+git checkout - "check out" a different version of the code from the one you're currently looking at.
+
+git diff - create a "diff" view to demonstrate what has changed between two different versions of your repository.
+
+git branch branchname - create a new branch named branchname.
+
+git checkout branchname - switch to the branch named branchname.
+
+git checkout -b branchname - create a new branch named branchname and switch to that branch.
+
+git branch - list all branches in the current repository and indicate which branch you're currently in.
+
+git branch -D branchname - delete the branch named branchname from the repository.
+
+git merge branchname - merge the history from branchname into the current branch.
+
+git clone - create a new repository that is a clone of a remote repository.
+
+git remote - list all remote repositories associated with the current repository.
+
+git remote add - add a new remote repository to the current repository.
+
+git push - push your latest changes to a remote repository.
+
+git pull - pull the latest changes from a remote repository to your repository.
