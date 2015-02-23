@@ -1,0 +1,22 @@
+ls = list contents of the directory
+	-l = long
+	-a = all (including hidden)
+cd = change directory
+cp = copy
+	-r = recursive; required for copying directories
+mv <file>1 <file2> = move file1 to file2, also used to renamerm = remove/delete
+	-r = recursive; required for deleting directories
+mkdir = make a new directory
+	-p = makes each directory needed for the final one
+whoami = displays the current user
+adduser = create a new user
+su <username> = switch user to the username
+chmod <u/g/o><+/-><r/w/x> || <0-7><0-7><0-7> = change mode / permissions
+chown <newowner><file> = changes owner of the file
+^Z = pause a process/job
+fg %<Job ID> = foreground, brings the job back; adding %<Job ID> brings back a particular job
+jobs = brings up a list of running jobs
+& = added to the end of a program call to immediately put it in the background
+kill <-TERM / -KILL / -STOP> <ProcessID> = send a signal to the process
+ps aux | grep "<process name>" = search for the process to get its ID#
+/dev/null = Unix file that will delete anything written to it
