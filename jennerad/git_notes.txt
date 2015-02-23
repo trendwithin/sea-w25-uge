@@ -1,0 +1,895 @@
+GIT
+
+********
+GIT FLOW
+
+git init  #(just once to initialize)
+
+#do stuff to files
+
+git status
+
+git add [filename]  #stage changes to file
+
+git commit -m “”  #commit changes
+
+git status   #what’s up git?
+********
+
+Notes | Git on Treehouse:
+
+Treehouse/Git Basics
+
+git —version
+git config —global user.name “xyz”
+git config —global user.email “jkdlfjdfj@xyz"
+
+create a repo:
+option 1:
+	git init my_first_repo
+
+option2:
+go into the folder
+git init (assumes THIS folder)
+
+ls -a shows an invisible .git file. Delete that and git stops tracking (rm -r my_even_cooler_project/.git
+
+create a file:
+nano README
+
+track the file:
+git add README //adds to staging area
+
+commit changes:
+git commit  
+git commit -m “comments here"
+git commit -a //commits everything that has changed (no need to list individual files)
+	a=all
+	m=message
+git commit -a -m //both!
+
+
+
+staging a file:
+from inside the project folder
+git status //shows if a file has been changed, what’s on the stage
+git add file1
+git commit -m “changed file1”
+
+
+touch file1
+touch file2 //this creates files
+
+history, review commits
+git log //shows commit identifier, author, date & time, commit message
+
+check out a version, using the identifier
+git checkout <commit id>
+(error message about detached HEAD - telling you you’ve checked out an older version and you might get weird results if you make changes)
+
+(cat file1) to read it
+
+git checkout master //goes back to the master
+git checkout HEAD //most recent commit
+git checkout HEAD~1 //shows you the previous commit
+
+diff can show what’s changed between 2 files.
+git diff <commit id 1><commit id 2>
+
+branching
+git status will tell you which branch you are on.
+
+git branch <branchname>
+git checkout <branchname>
+git checkout -b <branchname> //create and checkout
+git status will tell you which branch you are on
+
+*when you create a new branch it starts as a copy of whatever commit you are currently on.
+
+what branches exist?
+git branch
+delete a branch?
+git branch -d <branchname>
+git branch -D <branchname> //deletes no matter the merge status
+rename a branch?
+git branch -m <oldname> <newname>
+git branch -M <oldname> <newname> //if there is already one named <newname> it forces it
+
+
+merging
+git checkout master //first, go to the master branch
+git merge <branchname> //merges branchname history into current branch
+
+fast-forward in header means
+
+merge conflicts
+edit the file in nano…
+
+<<<<<<<HEAD (latest commit in current branch)
+jdlfdafd;l
+=======
+kfljdljafldajf;
+>>>>>>branch name
+
+after conflict is changed
+git add <filename>
+git commit 
+//git knows we are resolving a conflict
+
+one option instead of merge commits is rebasing
+(take all changes from one branch and replay them on another)
+
+
+git merge and make sure that YOUR version wins
+
+git mergetool
+
+remote repos
+
+2 options
+push changes to remote repo
+pull changes from remote to local
+
+clone/cloning
+
+git clone <address>
+
+git clone <originalreponame> <localreponame>
+
+example: git clone our_clone_project ~/my_cool_project
+//automatically makes the original repo into a remote
+
+git remote //shows remotes associated with current repo
+example: originalreponame would show up
+
+git remote add <reponame> <path to directory name>
+example: git remote add our_clone ~/our_clone_project
+//add a new remote repo to the current
+
+push/pull
+git push - push your latest changes to a remote repository.
+git pull - pull the latest changes from a remote repository to your repository.
+git push remote-name new-branch-name
+
+example: git push origin new_feature
+
+if you get a fast-forward error:
+
+git pull remote branch
+
+
+error, no configured push destination
+need to specify the origin
+
+github
+
+pull requests - enhanced branches. working in isolation, discuss proposed changes, etc.
+
+Watch…github will notify us if anything notable happens
+Star…adds to favorites, easier to find later
+Fork…creates a clone in our own account
+
+create a NEW repo via GitHub
+touch README.md
+git init
+git add README.md
+git commit -m “first commit”
+git remote add origin https://github.com/jennerad/newreponame
+git push -u origin master
+
+or push an existing one
+git remote add origin https://github.com/jennerad/newreponame
+git push -u origin master
+
+git workflow
+
+master branch = canonical
+
+feature branches are great for when you want to add a new feature, do a big refactor/redesign, or a substantial change.
+
+GitFlow
+feature branch philosophy for features, release, hot fixes
+
+needs to be installed
+
+git flow init //initialize your current repo
+asks about which branch to use for production (master is the live version)
+asks about which branch to put next release
+branch prefixes: accept defaults
+version tag prefixes: tagging are special names for certain commits
+
+git flow feature start feature_name
+	creates a new branch feature/feature_name, based on whatever branch you were in. and checks out that branch. 
+
+when done
+git flow features finish feature_name
+	merges feature_name into the next release branch, removes feature_name and checks out the next release branch.
+
+hotfix branches
+git flow hotfix start oh_no_a_bug
+make changes
+git flow hotfix finish oh_no_a_bug
+
+
+
+**********
+
+Notes from Git on CodeSchool
+
+Git on CodeSchool
+
+
+
+
+git diff
+
+git diff  - - staged 
+
+
+
+git reset HEAD <file>  //unstages <file> (HEAD is the last commit on current)
+
+git checkout - - <file> //discard changes
+
+
+
+git commit -a -m <file> //add changes from all tracked files w/o staging
+
+
+
+Only do these BEFORE push.
+
+git reset - - soft HEAD^ //undo last commit and move everything back to staging
+
+git reset - - hard HEAD^  //undo last commit and all changes
+
+git reset - - hard HEAD^^ //undo last 2 commits and all changes
+
+git commit  - - amend -m “I made one more change”  //adds this the last commit
+
+
+
+2 SHARING
+
+push & pull
+
+
+
+github & bitbucket (hosted) access control
+
+
+
+adding a remote:
+
+git remote add origin https://github.com/jennerad/git-real.git
+
+(origin is the repo’s name - the official repository usually called origin)
+
+
+
+git remote -v //shows all remotes that local git repo knows about
+
+
+
+push to remote:
+
+git push -u origin master //origin is remote repo, master is local branch to push
+
+(asks for username&pwd)
+
+(password caching: https://help.github.com/articles/set-up-git/
+
+
+
+git pull
+
+
+
+
+
+git remote rm <name>   //to remove remotes
+
+git push -u <name> <branch> //to push to remotes (git push -u origin master)
+
+
+
+Heroku/gem
+
+heroku create //git repo ssh 
+
+heroku create
+
+git remote -v
+
+git push heroku master  //pushes local to heroku & triggers deployment
+
+
+
+
+
+3 CLONING & BRANCHING
+
+
+
+clone the repo
+
+get the url for the repo
+
+
+
+git clone <url>  //does 3 things: downloads entire repo into a new directory, adds the origin remote, checks out the initial branch (probably master) & sets head
+
+git clone <url> git-demo  //if you want to give it a name
+
+
+
+git remote -v //lists origin and all of the 
+
+
+
+create a branch
+
+git branch cat
+
+
+
+git branch //shows which branch you are in.
+
+
+
+git checkout <branchname> //switches to different branch/timeline
+
+
+
+echo “Schrodinger” > cat.txt
+
+git add cat.txt
+
+git commit -m “create quantum cat”
+
+
+
+merge 2 timelines/
+
+
+
+go to master
+
+git merge <branchname>  //fast-forward
+
+
+
+git branch -d <branchname>  //deletes a branch
+
+
+
+git checkout -b <branchname>  //creates and switches to a a new branch
+
+
+
+Vi pops up when git wants an explanation
+
+j=down
+
+k=up
+
+h=left
+
+l=right
+
+esc=leave mode
+
+i=insert mode
+
+:wq=save&quit
+
+:q!=cancel&quit
+
+
+
+4 COLLABORATION
+
+git status //shows list of changes on stage
+
+git add  - - all //add all changes
+
+git commit -m “add store & products”
+
+
+
+when there is a rejection of a commit because of a conflict:
+
+git pull //fetches remote and syncs with local, Merges origin/master with master (git merge origin master)
+
+…have to do a merge commit
+
+git push //syncs origin/master remote and local
+
+
+
+Merge conflicts
+
+fix the text file manually, then
+
+git commit -a 
+
+
+
+5 BRANCHING
+
+remote branches - when you want other to be able to work on them, you wan them remotely. it’s also a good backup
+
+git checkotu -b shoppingcart
+
+git push origin shoppingcart  //links the local branch to the remote one and starts tracking it
+
+
+
+git fetch //fetches all remote info
+
+
+
+git add cart.rb
+
+git commit -a -m “adding”
+
+git push
+
+
+
+Jane does a git pull 
+
+git branch -r //shows remote branches vs git branch <> which only shows local
+
+git checkout shoppingcart
+
+//work on it
+
+git push origin
+
+
+
+git remote show origin //shows remote branches and if they are tracked or not, shows local ones
+
+
+
+git push origin :shoppingcart //only deletes the remote branch
+
+git branch -D shoppingcart //deletes local branch
+
+git remote prune origin //cleans up stale branches (that someone else deleted)
+
+
+
+git push heroku-staging staging:master //(local:master) to push local staging branch & deploy it as master on heroku
+
+
+
+TAGS & TAGGING
+
+a tag is a reference to a specific commit
+
+example: version 0.1
+
+git tag
+
+git checkout v0.0.1
+
+git tag -a v0.0.3 -m “version 0.0.3” //to add a new tag
+
+git push - - tags //pushes new tags 
+
+
+
+REBASE
+
+a better way than merge/commits, which pollute history
+
+intend of pull/push, do fetch/rebase
+
+
+
+fetch = pulls but doesn’t merge
+
+rebase does 3 things
+
+moves all changes to master that aren’t in origin/master to a temporary area
+runs all origin/master commits
+runs all commits from temporary area one at a time.
+
+
+local branch rebase
+
+git checkout admin (branch)
+
+git rebase master
+
+git checkout master
+
+git merge admin
+
+
+
+conflicts with rebase
+
+git fetch
+
+git rebase 
+
+fix things
+
+git rebase --continue
+
+or if never mind.
+
+git rebase —skip
+
+git rebase —abort //you never ran rebase 
+
+
+
+
+
+HISTORY & CONFIG
+
+git log
+
+colorize the log
+
+git config —global color.ui true
+
+git log —pretty=oneline
+
+git log —pretty=format: “%h %ad- %s [%an]”
+
+  %ad is author date
+
+  %an is auth name
+
+  %h SHA hash
+
+  %s subject
+
+  %d ref names
+
+
+
+git log —oneline -p (for patch) //shows what lines have been changed (add/removed)
+
+git log —oneline —stat //how many insert/deletions for each file/commit
+
+git long —online —graph // visual rep of the branches and commits
+
+date ranges >
+
+  git log —until=1.day.ago
+
+  git log —since=1.month.ago
+
+  git log —since=2000-01-01 —until=2012-12-21
+
+
+
+git diff 
+
+git diff HEAD //same as git diff
+
+git diff HEAD^ parent of latest commit
+
+git diff HEAD^^ grandparent of latest commit
+
+git diff HEAD~5 five commits ago
+
+git diff HEAD^..HEAD compare most recent and second most recent
+
+
+
+you can also use SHAs to compare
+
+fit diff afjkdalfjdljfdklajfldjafl..jfldjafldjalfjkalfjdklajfl
+
+abbreviated:
+
+git log —oneline
+
+  jkdlafjd first one
+
+  ajlfdjalfjl second one  
+
+git diff jkdlafjd..ajlfdjalfjl;
+
+branch names:
+
+git diff master bird
+
+time:
+
+git diff —since=2000-01-01 —until=2012-12-21
+
+
+
+BLAME - who and when
+
+git blame <filename> —date short
+
+
+
+git status
+
+need a folder but want to exclude
+
+.git/info/exclude file - not included in git status
+
+a particular file //tutorial.mp4
+
+all mp4s // *.mp4
+
+
+
+.gitignore //exclude from all copies
+
+logs/*.log <— put this in .gitignore
+
+git add .gitignore
+
+git commit -m “Ignore all log files"
+
+
+
+REMOVING FILES
+
+git rm <filename>
+
+git commit -m “remove filename"
+
+
+
+git rm — cached blah.log //deletes just from git
+
+
+
+git config --global core.editor emacs
+
+git config —global merge.tool opendiff //use this for seeing merge conflicts better
+
+
+
+aliases
+
+git config —global alias.st status
+
+git config —global alias.co checkout
+
+git config —global alias.br branch
+
+git config —global alias.ci commit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Notes from Girl Develop It, day 1:
+
+http://cherimarie.github.io/gdi-2day-core-git-github/day1.html
+
+(day1)
+
+git status - should list files
+
+add a file to be tracked - add tells Git to track the current status (stage)
+
+git add hello.txt
+
+
+stage and commit - commit saves changes made to the stages files, not the whole files. Allows us to track who and when changes made. 
+
+git commit -m “Added first file to repository.”
+
+
+git log
+
+SHA —> commit djklfajdlafdl;af;d
+
+comments —> add this to repository 
+
+********
+GIT FLOW
+
+git init  #(just once to initialize)
+
+#do stuff to files
+
+git status
+
+git add [filename]  #stage changes to file
+
+git commit -m “”  #commit changes
+
+git status   #what’s up git?
+********
+
+
+UNDO LOCAL CHANGES
+
+if you’ve made changes but not staged, checkout returns to last commit.
+
+
+
+git checkout hello.txt
+
+
+
+UN-STAGE A FILE
+
+if you already staged it
+
+git reset hello.txt
+
+
+
+DELETE A STAGED FILE
+
+if you already stage it but want to delete it. File gets deleted and it’s part of commit.
+
+git rm -f hello.txt
+
+
+
+
+
+UNDO STAGED CHANGES
+
+git reset hello.txt #unstages
+
+git checkout hello.txt #resets
+
+
+
+UNDOING COMMITTED CHANGES
+
+if you have made changes and committed them. you can revert, undoing everything from a specific commit
+
+
+
+git log #will show a log of all commits
+
+git revert [SHA]  #SHA is specific commit. Will undo everything from that
+
+
+
+
+
+UNDOING COMMITTED CHANGES 2
+
+this rolls back the whole repo’s changes
+
+git log  #shows log (will list SHA’s)
+
+git reset —hard [SHA] #resets repo
+
+
+
+
+
+BRANCHING
+
+• Develop different code on the same base
+
+• Conduct exploratory work without affecting the work on master branch
+
+• Incorporate changes to your master branch only when you are ready
+
+
+
+
+
+git checkout -b feature_1 #make a new branch called feature_1
+
+git branch #shows all branches. active one will have a  *
+
+git checkout master #switch to the master branch
+
+
+MERGING
+
+switch to master and then merge the branch
+
+git checkout master
+
+git merge feature_1
+
+
+
+
+Vi text editor…if you get in there just type :q and then enter to exit
+
+
+
+Girl Develop It - Day 2
+
+git remote add origin [paste github url here]
+
+git pull origin master #make sure you have the most current
+
+git push origin master #push your local work to the repo
+
+
+
+
+
+branches
+
+
+
+git pull origin branchname
+
+git push origin branch name
+
+
+
+if github has branches that your local repo does not, 
+
+git fetch origin
+
+
+
+cloning
+
+go to the new directory (not inside another git repo)
+
+git clone 
+
+	creates a local directory for the repo
+
+	initializes that directory as a git repo
+
+	adds a remote connection called origin to the github repo it was cloned from
+
+	pulls from the github repo so it’s up-to-date
+
+
+
+fork
+
+from a github page, create a fork
+
+clone it to your computer
+
+add a remote to the original repo so you can stay up to do with changes
+
+git remote add upstream https://github.com/original-username/FORKED-REPO-NAME.git //creates a remote called ‘upstream’ to the original
+
+git fetch upstream //pulls in changes not present in your local repo, w/o modifying files
+
+
+
+pull
+
+after you fork/clone a repo, all pushed changes will go to your fork
+
+won’t affect the original repo
+
+if you want to get your changes incorporated, submit a pull request
+
+go to your git resources directory
+add a resource to the list
+save, add, commit your changes
+push changes to github repo //git push origin master
+starting a pull request
+
+go to the github repo page, code, pull requests
+
+
+
+
+

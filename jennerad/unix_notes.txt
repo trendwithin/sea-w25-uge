@@ -1,0 +1,263 @@
+notes from Treehouse/Console
+
+touch file1 //touch creates files
+
+to read a file
+
+cat file1 //cat is a short way to read a file
+
+less hello.txt
+  arrow keys = scroll
+  space bar = page down
+  q = quit
+
+Cat - concatenates
+  cat hello.txt hellothere.txt
+  concatenates, prints out entire text and returns to prompt
+
+text editors
+  nano (modeled after pico)
+
+
+file mgmt
+
+rename = mv
+    mv hello.txt hi.txt
+
+.. = up one level
+. = current directory
+~ = home directory
+
+cp = copy
+  copy a directory -> cp -r <file>
+
+rm = remove
+  remove a directory -> rm -r <directory>
+
+mkdir = make directory
+  mkdir -p documents/notes/console/part1 ->lets you create nested directories
+
+users
+
+whoami
+
+sudo means switch to superuser mode!
+
+sudo adduser
+
+su -> switch user
+exit -> takes you out of su -> back to previous user
+
+permissions
+rwx 
+(ugo)
+user
+group
+other
+
+chmod o+w <filename> (who(ugo) and what(rwx))
+
+permissions may be displayed in octal
+You may read or set permissions using a 3 digit octal number. The digits represent the owner, group, and other permissions, from left to right. Each digit may be 0 through 7 representing the different combinations of read, write, and execute.
+
+To compute what each digit means, use this formula.
+
+read/r = 4
+
+write/w = 2
+
+execute/x = 1
+
+For each permission you want to grant, sum their corresponding values.
+
+example:
+
+742 =
+
+rwx r— -w-
+
+chmod 777 = rwx for everyone!
+
+
+
+file ownership
+
+sudo chown <newusername> <filename> (sudo overrides permissions)
+
+sudo chown <newusername:newgroupname> <filename> 
+
+
+
+sudo
+
+root user can do anything
+
+sudo allows you to run a command as super user(root)
+
+!! = last command
+
+sudo!! = run the previous command as sudo
+
+
+
+processes=instance of a program
+
+top - activity monitor
+
+ps - show process status
+
+ps aux = all users
+
+ps aux | grep “top” // pipe combines processes
+
+grep - search for a pattern
+
+
+
+pause and resume
+
+job is a process that belongs to you in this session
+
+control-z = stop/pause current process
+
+control-c = terminate/exit a process
+
+fg = (foreground) bring last stopped process to foreground
+
+fg 1 = brings job#1 (from jobs) to the foreground
+
+top & = sends it to background
+
+jobs = list jobs for THIS session
+
+
+
+killing processes
+
+kill - send a signal to a process
+
+signals
+
+  term - terminate normally, same as ctrl-c
+
+  stop - pause, same as ctrl-z
+
+  9 - force exit
+
+  kill - force exit
+
+
+
+kill 1450
+
+kill -TERM 1450 (normal terminate signal)
+
+if that doesn’t work...
+
+  kill -KILL 1450 (terminate immediately)
+
+  kill -9 1450 (terminate immediately)
+
+kill -STOP 1450 (pause)
+
+
+environment variables
+
+VARIABLE=value - set a local environment variable (set a value associated with a name)
+variable names are in all caps
+
+$HOME - path to home dir
+$PATH - list of locations where programs are stored
+$PS1 - format of command line prompt (default is: PS1=\u \w $)
+
+echo $HOME
+
+variables are local by default, if you want it in all processes in the session:
+export VARIABLE=value - set an environment variable that will be visible to child process
+
+env - view environment variables
+bash - start a new session within current session
+exit - exit a bash
+echo - display arguments sent to echo
+
+which - prints the location of a program
+
+this would include a local path to the list of places to look for programs:
+export PATH=/home/jennifernerad/bin:$PATH //stitching a path together
+
+bashrc
+
+find and grep
+
+find . -name “search” = look for files with the name search starting from the current directory (l)
+
+grep “pattern” <filename> - find any lines inside a file that contain the pattern in the given file - global regular expression print
+
+grep -n “pattern” <filename> - includes line numbers
+grep -i “pattern” <filename> - not case sensitive
+grep -v “pattern” <filename> - show lines without the pattern
+man grep for more
+
+pipes & redirection
+
+piping - you can take the output of one process and make it the input of another process - chaining
+
+somecommand < inputfile //run somecommand with input from inputfile instead of the keyboard (default)
+  grep this < hello.txt
+somecommand > outputfile //run somecommand with output to outputfile instead of screen
+  grep this hello.txt > howmanyhellos.txt //overwrites howmanyhellos.txt
+  grep this hello.txt >> howmanyhellos.txt //appends howmanyhellos.txt
+command1 | command2 //pipe the output of command1 to the input of command2
+
+end of file = control-d
+
+permission denied results, what to do
+there are 2 output streams
+  1 standard output stream
+  2 standard error (prints to terminal)
+
+find / -name “sudoers” 2> errorlog.txt // output goes to terminal, errors go to error log file
+find / -name “sudoers” 2> /dev/null //automatically discards error junk
+
+ps aux | grep bash //get ps aux, look for bash, then output
+
+sort - sorts output
+
+ps aux | grep bash | sort > sorted_bash_procs.txt
+
+installing via console
+
+sudo make install - run the install script from the Makefile. Installs the program.
+
+Ubuntu’s package manager = apt (advanced packaging tool)
+
+installing w/o a package
+
+sudo apt-get update - updates computer’s catalog of available softwares
+
+STEP 1: download source file
+sudo apt-get install <package-name>
+which make // confirm that it’s installed - which tells you where a program is located in system, make is a program for building things
+curl -O <url> // downloads the file
+STEP 2: untar the file
+tar -xvf filenamehere.tar.gz //untar the file (flags are: extract, verbose, point to file)
+STEP 3: Run ./configure script
+./configure //run the configure file that is in the current directory
+STEP 4: Run make command
+make //make is a program we just installed
+STEP 5: Run sudo make install
+sudo make install //actually install the program
+
+package manager for ubunto is called apt
+
+sudo apt-get update //updates, run this regularly, followed by
+sudo apt-get upgrade //security updates and new packages
+
+apt-cache search PATTERN // search for a package based on a patter
+  apt-cache search git
+sudo apt-get install PACKAGE
+  sudo apt-get install git
+apt-get remove PACKAGE
+  sudo apt-get remove git
+
+
