@@ -1,0 +1,44 @@
+Git Commands
+==================================================================================================
+
+Commands                                | Action
+----------------------------------------|----------------------------------------------------------------
+git init                                | Initialize a git repo
+git status                              | Displays the current state of the project
+git add filename                        | Adds that file to the staging area and starts tracking changes
+git add '*.txt'                         | Adds all text files to the staging area
+git commit -m "Commit message"          | Commits (stores) changes with the commit message
+git log                                 | Shows your commit history
+git remote add RemoteName RemoteUrl     | Adds a remote location for local repo to remote name at repo url
+git push -u RemoteName BranchName       | Pushes local changes to remote repo; -u tells Git to remember the parameters so that next time we can simply run git push
+git push                                | Pushes the local changes to the remote repo you previously specified with git push -u RemoteName BranchName
+git pull RemoteName BranchName          | Gets changes made to the specified branch of our remote repo
+git diff HEAD                           | View the differences pulled from the remote branch compared to our most recent commit (HEAD)
+git diff --staged                       | View the changes you just staged
+git reset filename                      | Unstages the specified file(s)
+git checkout -- targetfile              | Get rid of all changes since the last commit for the targetfile
+git branch NewBranchName                | Creates a branch with the specified name
+git branch                              | Displays all branches and current working branch
+git checkout NewBranchName              | Switches to the specified branch
+git rm '*.txt'                          | Removes the files from disk and stages the removal of the files
+git merge NewBranchName                 | Merges the specified branch name into the branch you're currently working on
+git branch -d NewBranchName             | Deletes the specified branch
+                                        |
+
+
+Git Configuration
+==================================================================================================
+Commands                                | Action
+----------------------------------------|----------------------------------------------------------------
+git config --list                       | List all the settings Git can find at that point
+git config user.name "Name"             | Configure your name for a specific repo
+git config --global user.name "Name"    | Configure the username for every repo on your computer
+git config --global user.email e@m.com  | Configure the email for every repo on your computer
+git config --global core.editor "subl -n -w" | Set Sublime Text as your default git editor
+
+
+
+Notes
+==================================================================================================
+- RemoteName - Git doesn't care what you name your remotes, but it's typical to name your main one origin.
+- HEAD - the pointer to the most recent commit in your local repo

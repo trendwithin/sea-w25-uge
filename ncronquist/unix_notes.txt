@@ -1,0 +1,48 @@
+Shortcuts
+==================================================================================================
+Shortcut            | Action
+--------------------|------------------------------
+Ctrl+Alt+T          | Open the terminal
+Ctrl+L              | Clear the terminal
+Ctrl+A              | Cursor to start of line
+Ctrl+E              | Cursor to end of line
+Ctrl+U              | Delete left of the cursor
+Ctrl+K              | Delete right of the cursor
+Ctrl+W              | Delete word on the left
+Ctrl+Y              | Paste (after Ctrl+U,K, or W)
+TAB                 | Auto completion of file or command
+
+
+Unix Commands
+==================================================================================================
+Command  | Action                                 | Example
+---------|----------------------------------------|---------------------
+pwd      | print working directory                | `pwd`
+hostname | my computer's network name             | `hostname`
+mkdir    | make directory                         | `mkdir temp/stuff/`
+cd       | change directory                       | `cd temp/stuff` or `cd -p temp/stuff/nick` to also create parent folders
+ls       | list directory                         | `ls`, `ls stuff/` or `ls -lR` will list files and folders in that directory
+rmdir    | remove directory                       | `rmdir alex` or `rmdir -p frank/joe/alex/` will remove directory and ancestors
+rm       | remove file                            | `rm test.txt` or `rm -R something/` will remove the folder and its contents
+pushd    | push directory                         | `pushd i/like/icecream` will add current directory and new directory into list to switch between; `pushd` will switch between list items
+popd     | pop directory                          | `popd` returns you to last directory you pushed and removes it from the list
+touch    | creates an empty file                  | `touch test.txt`
+cp       | copy a file or directory               | `cp test.txt neat.txt`, `cp neat.txt something/`, `cp -r something newplace`
+mv       | move or rename a file or directory     | `mv test.txt neat.txt`, `mv neat.txt something/`, `mv something/ somethingnew/`
+less     | page through a file                    | `less test.txt` displays file; use `w+space` to move down; use `q` to quit
+cat      | print the whole file to the terminal   | `cat test.txt`, `cat test.txt test2.txt`
+xargs    | execute arguments                      |
+find     | find files                             |
+grep     | find things inside files               |
+man      | read a manual page                     |
+apropos  | find what man page is appropriate      |
+env      | look at your environment               |
+echo     | print some arguments                   |
+export   | export/set a new environment variable  |
+exit     | exit the shell                         | `exit`
+sudo     | DANGER! become super user root DANGER! |
+
+Notes
+==================================================================================================
+- Adding a `/` at the end of a directory makes sure the file really is a directory, so if the directory doesn't exist, you will get an error
+- If `ruby -v` isn't working to display the current version of ruby, try `/bin/bash --login` to load it to bash shell
