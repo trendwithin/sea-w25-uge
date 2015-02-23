@@ -1,0 +1,2 @@
+git diff --stat origin/<branch name> - visually shows you the changes in your feature branch from origin/<branch name>
+git pull --rebase - "stashes" your local commits to the side, pulls changes from origin and rebases your changes on top of the changes from origin.

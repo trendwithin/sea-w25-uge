@@ -1,0 +1,5 @@
+mkdir <name> - makes a new folder
+mkdir <name> && cd <name> - makes new folder and changes directory into new folder
+touch <filename.extension> - makes new file with specific extension
+vi <filename> - opens vi to edit file
+vi :wq - write quit
