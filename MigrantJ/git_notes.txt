@@ -1,0 +1,79 @@
+Git is a distributed version control system, meaning there is no central enforced repository.
+
+If you don't want a folder to be a git repo, just rm the .git folder out of it
+
+
+
+** Git Commands **
+
+git --version - Print the version of git that is installed
+
+git init - Creates a new repo in the current folder
+
+git init <repo_name> - Creates a new folder with that name and puts a git repo there
+
+git add <file> - Add file to local repo
+
+git commit - Commit a change to your local repo
+-a = commit all modified files
+-m = message. follow with string to add commit message
+
+git config --global user.name <string> - Set your git user name. also user.email
+
+git status - Shows files that have been added or modified, and which have been staged for committing
+
+git log - displays a log of all commits
+
+git checkout <identifier> - Check out a particular version in the history of the repo. Note you only need the first 5 or 6 letters in the id
+- git checkout master - back to latest version. or use HEAD
+- HEAD~1 is a special id that refers to previous commit
+
+git checkout <name> - switch to a branch
+
+git checkout -b <name> - create a branch then immediately switch to it
+
+git diff <first id> <second id>
+
+git branch <name> - Create a new branch. NOTE you have to use git checkout to then switch to it!
+- with no params, this will list all branches and show which one you're on
+-D <name> - deletes a branch. Cannot be performed on a branch you're in
+
+git merge <branchname> - run this inside the branch you want to merge into
+merge conflicts can be resolved by editing the file manually, then add and commit the file
+
+git clone <folder or url> <optional newname> - Clone a repo
+
+git remote - Lists all remote repos available to this repo. There is always one named "origin", which is where you originally cloned the repo from
+
+git remote add <name> <path> - Add a remote to a repo labeled with name
+
+git push <remote> <branch> - Push commits to a remote. Branch is only necessary if the branch does not exist in the remote.
+- if no remote provided, will assume origin
+
+git pull <remote> <branch> - Pull commits from remote
+- also merges
+
+
+
+** GitHub Notes **
+
+Pull Requests - Request that your changes be merged into the main project. Allows for review of the changes and commenting line-by-line
+
+Forking - Add a clone of the project to your own GitHub account
+
+To add a repo to GitHub, click the Add New Repo button in the upper right corner
+
+Some sites to find open source projects to contribute to: CodeTriage, OpenHatch, LookingForPullRequests
+
+
+
+** GitFlow Notes **
+ - An extension to make working with feature branches easier
+
+git flow init to start using in a repo
+
+git flow feature start <feature_name> - Do this to start a new feature branch and switch to it
+
+git flow feature finish <feature_name> - Switch to integration, pull, merge from feature branch, delete feature branch
+
+git flow hotfix start <name> - Similar to feature, but works with master to get in changes NOW
