@@ -1,0 +1,178 @@
+** Nav / File Commands **
+
+cd <path> - Change directory
+
+ls <path> - List contents of directory
+
+ls -l <path> - Get detailed info about each file in dir
+
+ls -a - Show hidden files (ones prefixed with ".")
+
+pwd - Print working directory to console
+
+less <file> - Display contents of file, do not leave on console upon quitting (press Q)
+
+more <file> - Same, except leave contents on console upon quitting
+
+cat <file> - Prints file contents to console (among other things)
+
+mv <source> <dest> - Move / rename file or directory
+
+cp <source> <dest> - Copy file to destination
+
+cp -r <source> <dest> - Recursive copy, used on dirs
+
+clear - Wipe the console and start back at the top
+
+rm <file> - Delete a file
+
+rm -r <dir> - Delete a directory and its contents
+
+mkdir <dir> - Create a directory
+
+mkdir /p <deeppathdir> - Creates directories as deep in the tree as you want, even in nonexistent directories
+
+exit - Ends the current shell session
+
+
+
+** Other Nav / File Notes **
+
+.. references up one directory (ex. "cd ..")
+
+. references current directory (ex. "mv docs/my_file.txt . ")
+
+~ represents home directory (ex. "cd ~")
+
+!! references last command (ex. you can repeat the previous command with sudo by typing "sudo !!"
+
+&& lets you string together commands on one line
+
+
+
+** User / Permission Commands **
+
+whoami - Print current username on console
+
+sudo <command> - Perform a command as superuser (root). 
+
+adduser <username> - Adds a user to a group with the same name. Creates a home dir automatically.
+
+su <username> - Switch to user
+
+exit - End the su session
+
+chmod <who+ or who-> <permissions> <file or dir> - Modify permissions of a directory. Ex. "chmod ug+w" means add write permission to owning user and group.
+
+chmod <octal permission> <file> - Set multiple permissions at once. r = 4, w = 2, x = 1. So "700" is rwx for user, and none for group and other.
+
+chown <username>:<group> <file> - Change user owner and group owner of file. May require sudo. Note the colon.
+
+
+
+** Other User / Permission Notes **
+
+Permissions are set with the following properties:
+- r w x - Read write execute (who is allowed to perform these actions)
+- u g o - Each file has an owning user, an owning group, and all other users outside those.
+- r w x is defined for each of these and is often represented drwxrwxrwx (first char is either d or - depending on if it's a directory)
+
+
+
+** Process Commands **
+
+top - View running processes. Press ? to get help, q to quit
+
+ps - List processes current user is running
+
+ps aux - List all processes. Piping to grep is useful.
+
+fg - Resume the last paused process (or "job"). Ctrl + Z pauses a process.
+
+fg <jobnum> - Resume a specific job
+
+jobs - List all jobs this session and get their numbers
+
+kill <pid> - Kill a process by its id number, allows process to stop gracefully
+
+kill -9 <pid> - Kill immediately LAST RESORT ONLY. or kill -KILL
+
+kill -STOP <pid> - Like hitting Ctrl Z inside process
+
+
+
+** Other Process Notes **
+
+Ctrl + Z - Pause a process (creates a "job")
+- Follow a command with & to start it paused
+
+signal - a message sent to a process by the OS. Types of signals:
+- TERM - terminate (Ctrl + c)
+- STOP - stop or pause (Ctrl + z)
+
+
+
+** Environment Notes **
+
+env - Prints all environment variables and their values
+
+PS1 - Defines what is printed in the prompt. Used by Bash, I'm not sure if Zsh has this
+
+which <command name> - shows the path / alias information for a shell command or program
+
+export <envVar = value> - modify or create a new environment variable that can be shared across sessions
+
+$ prefix on an env var means "get the value". cd HOME won't work, but cd $HOME will
+
+you can set env vars by just typing ex. "PS1='this is the prompt'". NO SPACE between var name and value. Note these are only available in the current session. Use the export command to make it available across sessions. Note this STILL won't preserve it if your computer restarts. For that, you need to edit ~/.bashrc
+
+to add to $PATH, use "export PATH=/new/path/here:$PATH" this will preserve the contents of the old $PATH
+
+
+
+** Search Notes **
+
+find <path> -name <searchtext> - Finds files based on filename, using the path given as the top and searching down
+- You can give multiple paths to search, ex. "find bin etc -name 'hi'"
+
+grep <regex> <file or filelist> - Global Regular Expression Print. Use regex to search for text matching the pattern. -n prints line numbers. -i to make search case insensitive. -v inverts the search. 
+
+
+
+** Input / Output Notes **
+
+Ctrl + d - end input stream
+
+< <filename> - use a file as the standard input
+
+> <filename> - use a file as standard output. Note this will overwrite the file
+- To append, use >> instead
+
+2> <filename> - this redirects stderr, rather than stdout
+
+2> /dev/null - throw things you don't want into a void from whence they shall never return
+
+| - pipe. Stdout of one command becomes stdin of another
+
+
+
+** Installing Software Notes **
+
+Best method is with a package manager like apt
+
+sudo apt-get update - updates your computer's local database of software packages
+
+sudo apt-get install <name> - to install a package
+
+apt-cache search <string> - find packages
+
+sudo apt-get upgrade - upgrades existing packages to latest versions
+
+sudo apt-get remove <name> - uninstalls packages. Note any related packages will not be uninstalled, but it will tell you which ones
+
+if you can't use a package manager:
+- note: this requires installing the build-essential package
+- curl -O <url> - downloads a file
+- tar -xvf <tarFile> - extract a tar file
+- make - looks for a Makefile in the dir (usually generated by a configure program) to figure out how to build the program. Then it needs to be installed:
+- sudo make install - Installs a made program and makes it accessible through path. The sudo makes sure it can install to dirs a standard user might not have write access for.
