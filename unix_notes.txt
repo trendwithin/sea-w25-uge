@@ -1,0 +1,15 @@
+ls -flag list director contents
+cd <path> change director
+man man page
+less/more output/input redirect for pagination
+mv move files/change file name if one does not already exist
+cp copy file if one does not exist
+touch create file if one does not exits else modify current timestamp
+. current directory
+.. directory above
+mkdir create a directory
+rmdir -r remove dir and contents
+grep pattern matching utility for files
+find recursively search a directory tree 
+
+

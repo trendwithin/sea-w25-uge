@@ -1,0 +1,17 @@
+git init -> initialize git repository
+git add  -> add file to stage area
+git commit -m 'message' -> commit 
+git log -> log of commits to repository
+git status -> current status of staging area clean/dirty
+git branch -> list of branches
+git branch (name) -> create a branch
+git branch checkout (name) -> switch branch
+git checkout -b name -> create and switch to branch
+git checkout master; git merge xyz -> switch to master/merge branch xyz
+git checkout (a2Zx6) -> check out past commit via ID
+git push -u origin master -> upstream push of local master to remote origin 
+git clone -> clone a git repository
+git pull -> performs git fetch followed by git merge/brings local branch up to date/sync remote
+
+
+
